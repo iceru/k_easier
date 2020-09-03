@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "627780996595",
+    "firebase_url": "https://k-easier-apps.firebaseio.com",
+    "project_id": "k-easier-apps",
+    "storage_bucket": "k-easier-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627780996595:android:344c90fc20e5885eb99686",
+        "android_client_info": {
+          "package_name": "com.codeomnia.k_easier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627780996595-j5ig1nr8p7mf1s2gpcahlfbqk8fts56n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyMDZMHKL8VtmedFgjoM6tS0AwEqaQ7jM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627780996595-j5ig1nr8p7mf1s2gpcahlfbqk8fts56n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('K-Easier'),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('K-Easier'),
+            Text('by CodeOmnia'),
+            Text('Freakrault, Iceru, ReMuQu'),
+          ],
+        ),
+      ),
     );
   }
 }
