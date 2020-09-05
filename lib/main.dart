@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:k_easier/home.dart';
+import 'package:k_easier/dashboard.dart';
 
 void main() {
   runApp(App());
@@ -76,7 +77,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: MyHomePage(title: 'K-Easier by CodeOmnia'),
-      home: HomePage(),
+      home: Dashboard(),
     );
   }
 }
