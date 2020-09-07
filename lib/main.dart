@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:k_easier/home.dart';
 import 'package:k_easier/dashboard.dart';
+import 'package:k_easier/signIn.dart';
 
 void main() {
   runApp(App());
@@ -60,6 +61,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'K-Easier',
+      home: Dashboard(),
+      initialRoute: '/signin',
+      onGenerateRoute: _getRoute,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -77,7 +81,19 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: MyHomePage(title: 'K-Easier by CodeOmnia'),
-      home: Dashboard(),
+      // home: Dashboard(),
+    );
+  }
+
+  Route<dynamic> _getRoute(RouteSettings settings) {
+    if (settings.name != '/signin') {
+      return null;
+    }
+
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (BuildContext context) => SignIn(),
+      fullscreenDialog: true,
     );
   }
 }
