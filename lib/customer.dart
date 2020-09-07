@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:k_easier/components/colors.dart';
 
@@ -25,7 +26,7 @@ class Customers extends StatelessWidget {
                     Icons.supervisor_account)
               ],
             ),
-            tableCustomer
+            tableCustomer(context)
           ],
         ),
       ),
@@ -70,28 +71,48 @@ Widget buttonCustomer(colorButton, textColor, textButton, iconButton) =>
       ),
     );
 
-Widget tableCustomer = Container(
-  child: DataTable(
-    columns: const <DataColumn>[
-      DataColumn(label: Text('ID')),
-      DataColumn(label: Text('Name')),
-      DataColumn(label: Text('Last Visit'))
-    ],
-    rows: const <DataRow>[
-      DataRow(
-        cells: <DataCell>[
-          DataCell(Text('1')),
-          DataCell(Text('Muhamad Hafiz')),
-          DataCell(Text('20 Sept 2020'))
-        ],
-      ),
-      DataRow(
-        cells: <DataCell>[
-          DataCell(Text('2')),
-          DataCell(Text('Reza Mukhlis Q')),
-          DataCell(Text('20 Sept 2020'))
-        ],
-      ),
-    ],
-  ),
-);
+Widget tableCustomer(BuildContext context) {
+  return StreamBuilder<QuerySnapshot>(
+    stream: FirebaseFirestore.instance.collection('customers').snapshots(),
+    builder: (context, snapshot) {
+      if (snapshot.hasError) {
+        return Text('Something wrong');
+      }
+
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Text('Waiting');
+      }
+
+      return DataTable(
+          columns: const <DataColumn>[
+            DataColumn(label: Text('ID')),
+            DataColumn(label: Text('Name')),
+            DataColumn(label: Text('Last Visit'))
+          ],
+          rows: snapshot.data.docs.map((DocumentSnapshot document) {
+            return new DataRow(cells: [
+              DataCell(Text(document.id)),
+              DataCell(Text(document.data()['name'])),
+              DataCell(Text(document.data()['last_visit'].toDate().toString())),
+            ]);
+          }).toList()
+          // rows: const <DataRow>[
+          //   DataRow(
+          //     cells: <DataCell>[
+          //       DataCell(Text('1')),
+          //       DataCell(Text('Muhamad Hafiz')),
+          //       DataCell(Text('20 Sept 2020'))
+          //     ],
+          //   ),
+          //   DataRow(
+          //     cells: <DataCell>[
+          //       DataCell(Text('2')),
+          //       DataCell(Text('Reza Mukhlis Q')),
+          //       DataCell(Text('20 Sept 2020'))
+          //     ],
+          //   ),
+          // ],
+          );
+    },
+  );
+}
