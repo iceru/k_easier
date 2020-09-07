@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:k_easier/components/colors.dart';
 
 const mainColor = Color(0xff56C596);
 
@@ -130,7 +131,7 @@ Widget signIn = Container(
 Widget register = Center(
   child: Container(
       alignment: Alignment(0, 0),
-      color: Color(0xffB6E9D3),
+      color: secondaryColor,
       padding: const EdgeInsets.symmetric(vertical: 20),
       margin: const EdgeInsets.only(top: 5),
       child: Row(
@@ -142,7 +143,7 @@ Widget register = Center(
             style: TextStyle(fontSize: 16),
           ),
           Text(
-            'Register',
+            ' Register',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           )
         ],

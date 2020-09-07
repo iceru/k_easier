@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:k_easier/signIn.dart';
 
-const mainColor = Color(0xff56C596);
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,26 +19,6 @@ class HomePage extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => SignIn()));
           },
           child: Text('Sign In'),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('K-Easier'),
-            Text('by CodeOmnia'),
-            Text('Freakrault, Iceru, ReMuQu'),
-          ],
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('K-Easier'),
-            Text('by CodeOmnia'),
-            Text('Freakrault, Iceru, ReMuQu'),
-          ],
         ),
       ),
     );

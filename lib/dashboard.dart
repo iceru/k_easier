@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k_easier/transactions.dart';
-
-const mainColor = Color(0xff56C596);
+import 'package:k_easier/customer.dart';
+import 'package:k_easier/components/colors.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -39,9 +39,22 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: cardDash(Icons.supervisor_account, 'Customers'),
+                  Material(
+                    color: mainColor,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Customers(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: cardDash(Icons.supervisor_account, 'Customers'),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:k_easier/dashboard.dart';
+import 'package:k_easier/components/colors.dart';
 
 const grey = Colors.grey;
 
@@ -32,6 +32,7 @@ class Transactions extends StatelessWidget {
         backgroundColor: mainColor,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buttonTransaction(
               mainColor, Colors.white, 'Add Transactions ', Icons.add_circle),
@@ -70,13 +71,73 @@ class Transactions extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
-          buttonTransaction(
-              Colors.white, mainColor, 'List of Transactions ', Icons.receipt),
+          Container(
+            padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+            child: Text('List of Transactions'),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: FittedBox(
+              child: DataTable(
+                columns: const <DataColumn>[
+                  DataColumn(label: Text('ID')),
+                  DataColumn(label: Text('Total Items')),
+                  DataColumn(label: Text('Transaction Date')),
+                  DataColumn(label: Text('Customer'))
+                ],
+                rows: const <DataRow>[
+                  DataRow(
+                    cells: <DataCell>[
+                      DataCell(Text('1')),
+                      DataCell(Text('2')),
+                      DataCell(Text('20 Sept 2020')),
+                      DataCell(Text('Muhamad Hafiz')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: <DataCell>[
+                      DataCell(Text('2')),
+                      DataCell(Text('1')),
+                      DataCell(Text('20 Sept 2020')),
+                      DataCell(Text('Reza Mukhlis Q')),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt),
+            title: Text('Transaction'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_basket),
+            title: Text('Items'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            title: Text('Dashboard'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervisor_account),
+            title: Text('Customers'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            title: Text('User'),
+          ),
+        ],
+        selectedItemColor: mainColor,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
