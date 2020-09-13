@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k_easier/transactions.dart';
 import 'package:k_easier/customer.dart';
+import 'package:k_easier/items.dart';
 import 'package:k_easier/components/colors.dart';
 
 class Dashboard extends StatelessWidget {
@@ -12,7 +13,6 @@ class Dashboard extends StatelessWidget {
           'Dashboard',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
-        backgroundColor: mainColor,
         elevation: 0,
       ),
       body: Center(
@@ -60,9 +60,22 @@ class Dashboard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: cardDash(Icons.shopping_basket, 'Items'),
+                  Material(
+                    color: mainColor,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Items(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: cardDash(Icons.shopping_basket, 'Items'),
+                      ),
+                    ),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width / 2,

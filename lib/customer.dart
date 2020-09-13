@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:k_easier/addCustomer.dart';
 import 'package:k_easier/components/colors.dart';
 
 class Customers extends StatelessWidget {
@@ -11,7 +12,6 @@ class Customers extends StatelessWidget {
           'Customers',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: mainColor,
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
@@ -20,10 +20,70 @@ class Customers extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                buttonCustomer(
-                    Colors.white, mainColor, 'Filter Data ', Icons.filter_list),
-                buttonCustomer(mainColor, Colors.white, 'Add Customer ',
-                    Icons.supervisor_account)
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: ButtonTheme(
+                    height: 50,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(color: mainColor),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Filter Data ',
+                            style: TextStyle(color: mainColor, fontSize: 16),
+                          ),
+                          Icon(
+                            Icons.filter_list,
+                            color: mainColor,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: ButtonTheme(
+                    height: 50,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddCustomer()),
+                        );
+                      },
+                      color: mainColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(color: mainColor),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Add Customer',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          Icon(
+                            Icons.supervisor_account,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
             tableCustomer(context)

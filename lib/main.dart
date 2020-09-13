@@ -8,6 +8,21 @@ void main() {
   runApp(App());
 }
 
+Map<int, Color> color = {
+  50: Color.fromRGBO(86, 197, 150, .1),
+  100: Color.fromRGBO(86, 197, 150, .2),
+  200: Color.fromRGBO(86, 197, 150, .3),
+  300: Color.fromRGBO(86, 197, 150, .4),
+  400: Color.fromRGBO(86, 197, 150, .5),
+  500: Color.fromRGBO(86, 197, 150, .6),
+  600: Color.fromRGBO(86, 197, 150, .7),
+  700: Color.fromRGBO(86, 197, 150, .8),
+  800: Color.fromRGBO(86, 197, 150, .9),
+  900: Color.fromRGBO(86, 197, 150, 1),
+};
+
+MaterialColor colorCustom = MaterialColor(0xFF56C596, color);
+
 class App extends StatefulWidget {
   _AppState createState() => _AppState();
 }
@@ -74,7 +89,12 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.green,
+        primarySwatch: colorCustom,
+        primaryTextTheme: TextTheme(
+          headline6: TextStyle(color: Colors.white),
+        ),
+        primaryIconTheme:
+            Theme.of(context).primaryIconTheme.copyWith(color: Colors.white),
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
